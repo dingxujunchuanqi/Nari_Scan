@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/backgroung_icon"
+    android:orientation="vertical"
+    tools:context="com.nari.rt21dms.scan.MainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="15dp"
+        android:text="扫 码 识 物"
+        android:textColor="@color/player_white"
+        android:textSize="18dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@drawable/horizontald_ashedview_white"
+        android:layerType="software" />
+
+    <com.dd.CircularProgressButton
+        android:id="@+id/import_dataProBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/cpb_white"
+        android:textSize="14sp"
+        app:cpb_cornerRadius="15dp"
+        app:cpb_textComplete="导入完成"
+        app:cpb_textError="导入失败"
+        app:cpb_textIdle="导入数据" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.nari.rt21dms.scan.customview.BamButton
+            android:id="@+id/tiaoma_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="20dp"
+            android:background="@drawable/circle_yellow"
+            android:padding="15dp"
+            android:text="条形码扫描"
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimary"
+            android:textSize="15dp"
+            android:translationZ="10dp" />
+
+        <com.nari.rt21dms.scan.customview.BamButton
+            android:id="@+id/erweima_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="20dp"
+            android:background="@drawable/circle_theme_color"
+            android:padding="15dp"
+            android:text="二维码扫描"
+            android:textAllCaps="false"
+            android:textColor="@color/player_white"
+            android:textSize="15dp"
+            android:translationZ="10dp" />
+
+    </LinearLayout>
+</LinearLayout>

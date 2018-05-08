@@ -1,0 +1,75 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao' // 添加应用依赖插件
+android {
+    compileSdkVersion 27
+    buildToolsVersion "26.0.0"
+    defaultConfig {
+        applicationId "com.nari.rt21dms.scan"
+        minSdkVersion 15
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+      /*  applicationId project.PACKAGE_NAME
+        versionCode Integer.parseInt(project.VERSION_CODE)
+        versionName project.VERSION_NAME*/
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+       /* jackOptions {//安卓自己的 Java 编译器
+            enabled true
+        }*/
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    greendao {
+        schemaVersion 2
+        targetGenDir 'src/main/java'
+        daoPackage 'com.nari.rt21dms.scan.gen'
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+    dexOptions {
+        jumboMode true
+        preDexLibraries = false
+    }
+    //开启Java1.8 能够使用lambda表达式
+    compileOptions {
+        encoding = 'utf-8'//解决采用Java1.8 运行到真机文字乱码问题
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+}
+
+repositories {
+    mavenCentral()
+//    maven { url "http://repo1.maven.org/maven2" }
+    maven { url "https://jitpack.io" }
+//    maven { url "https://mvnrepository.com/artifact" }
+    maven {
+        url 'https://maven.google.com/'
+        name 'Google'
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:26.0.0'
+    //    compile project(':qrcodelib')
+    //compile 'com.github.XuDaojie:QRCode-Android:v0.4.2'
+    compile project(':qrcodelib')
+    compile 'cn.yhq:android-dialog:2.0.0'
+    compile 'org.greenrobot:greendao:3.2.2'
+    compile 'com.github.yuweiguocn:GreenDaoUpgradeHelper:v1.4.0'
+    implementation files('libs/jxl.jar')
+    implementation project(':library')
+    implementation files('libs/nineoldandroids-2.4.0.jar')
+}
